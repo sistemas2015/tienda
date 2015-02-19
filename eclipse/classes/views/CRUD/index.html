@@ -1,0 +1,29 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.title') /}
+
+<div id="crudIndex">
+
+    <h2>Seleccione la opción a Administrar</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th><b style="font-size: 14px;">Opciones</b></th>
+                <th width="20%">&{'crud.index.action'}</th>
+            </tr>
+        </thead>
+        <tbody>
+#{crud.types}
+            <tr>
+                <td>
+                    <a href="${type.listAction}"><h5>&{type.name}</h5></a>
+                </td>
+                <td class="crudNew" >
+                    <a href="${type.blankAction}" style="font-size: 14px; font-weight: bold;" class="btn btn-primary">Nuevo</a>
+                </td>
+            </tr>
+#{/crud.types}
+        </tbody>
+    </table>
+
+</div>

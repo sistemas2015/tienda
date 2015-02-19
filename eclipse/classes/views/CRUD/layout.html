@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+<style>
+titulo{
+font-size: 14px; 
+font-weight: bold;"
+}
+</style>
+<br><br><br>
+<!DOCTYPE html>
+
+<html lang="${lang}">
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}" />
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/crud.css'}" />
+    </head>
+    <body id="crud">
+ 
+ <div class="container">
+	<div class="row">
+        <div id="crudHeader">
+            <h1><a href="/admin"><i class="fa fa-home fa-1x"></i> Panel de Administración</a></h1>
+        </div>
+
+
+            <div id="crudBreadcrumb" style="font-size: 14px">
+                #{crud.navigation /}
+            </div>
+
+#{if flash.success}
+            <div class="crudFlash flashSuccess" style="font-size: 14px">
+                ${flash.success}
+            </div>
+#{/if}
+#{if flash.error || error}
+            <div class="crudFlash flashError" style="font-size: 14px">
+                ${error ?: flash.error}
+            </div>
+#{/if}
+
+        <div id="crudContent">
+#{doLayout /}
+        </div>
+
+     
+    </div>
+</div>
+    </body>
+</html>
