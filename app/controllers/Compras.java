@@ -45,6 +45,7 @@ public class Compras extends Controller {
     	render(productos);
     }
     
+
     public static void prods(Long id) {
     	System.out.println("se llamo");
     	Producto p = Producto.findById(id);    
@@ -73,6 +74,11 @@ public class Compras extends Controller {
 		//res.get(1).lista.valor
 		render(com);
 	}
+
+
+    public static void estadisticas(){
+    	render();
+    }
 
 
 }

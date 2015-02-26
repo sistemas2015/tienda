@@ -30,3 +30,6 @@ GET		/specific				                Compras.prods
 #Producto
 *		/repo				                    Compras.repo
 
+#Mapas
+*		/mapas									Mapas.index
+
