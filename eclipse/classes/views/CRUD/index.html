@@ -3,12 +3,12 @@
 
 <div id="crudIndex">
 
-    <h2>Seleccione la opción a Administrar</h2>
+    <h2>&{'crud.index.title'}</h2>
 
     <table>
         <thead>
             <tr>
-                <th><b style="font-size: 14px;">Opciones</b></th>
+                <th>&{'crud.index.objectType'}</th>
                 <th width="20%">&{'crud.index.action'}</th>
             </tr>
         </thead>
@@ -16,10 +16,10 @@
 #{crud.types}
             <tr>
                 <td>
-                    <a href="${type.listAction}"><h5>&{type.name}</h5></a>
+                    <a href="${type.listAction}">&{type.name}</a>
                 </td>
                 <td class="crudNew" >
-                    <a href="${type.blankAction}" style="font-size: 14px; font-weight: bold;" class="btn btn-primary">Nuevo</a>
+                    <a href="${type.blankAction}">&{'crud.index.add', type}</a>
                 </td>
             </tr>
 #{/crud.types}

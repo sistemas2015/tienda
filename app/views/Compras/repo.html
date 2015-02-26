@@ -1,0 +1,44 @@
+#{extends 'main.html' /} #{set title:'repo.html' /} #{extends
+'main.html' /} #{set title:'repo.html' /}
+
+<div class="container">
+	<div class="row">
+		<div class="well" align="center">
+			<h1>Mis compras</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="well">
+			#{if com}
+			<table class="table ">
+				<tr>
+					<th>Fecha</th>
+					<th>Producto</th>
+					<th>Cantidad</th>
+					<th>Precio U</th>
+					<th>Precio T</th>
+				</tr>
+				#{list res, as:'r'}
+				<tr>
+					<td>${r.fechaReserva}</td>
+					<td>${r.lista.vuelo.origen}->${r.lista.vuelo.destino}</td>
+					<td>${r.cantidad}</td>
+					<td>${r.lista.categoria.descripcion}</td>
+					<td>${r.lista.vuelo.avion.marca}</td>
+					<td>${r.lista.vuelo.fechaSalida}</td>
+					<td>${r.lista.vuelo.fechaLlegada}</td>
+					<td>${r.lista.valor}</td>
+					<td>%{ total =r.cantidad*r.lista.valor; out.print(total); }%</td>
+				</tr>
+				#{/list}
+			</table>
+			#{/if} #{else}
+			<h1>
+				lo sentimo no tiene compras realizadas para comprar haga clic <a
+					href="/compras">aqui</a>
+			</h1>
+			#{else}
+		</div>
+	</div>
+
+</div>

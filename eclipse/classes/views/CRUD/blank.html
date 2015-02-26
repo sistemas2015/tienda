@@ -1,17 +1,17 @@
 #{extends 'CRUD/layout.html' /}
 #{set title:messages.get('crud.blank.title', type.modelName) /}
 
-<div id="crudBlank" class="${type.name}" style="font-size: 14px">
+<div id="crudBlank" class="${type.name}">
 
-    <h2 id="crudBlankTitle">Nuevo &{type.modelName}</h2>
+    <h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
 
     <div class="objectForm">
     #{form action:@create(), enctype:'multipart/form-data'}
         #{crud.form /}
         <p class="crudButtons">
-            <input type="submit" name="_save" value="Guardar" class="btn btn-success" style="font-weight: bold; color:black;"/>
-            <input type="submit" name="_saveAndContinue" value="Guardar y Continuar Editando"  class="btn btn-warning" style="font-weight: bold; color:black;"/>
-            <input type="submit" name="_saveAndAddAnother" value="Guardar y Crear Otro" class="btn btn-primary" style="font-weight: bold; color:black;"/>
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
         </p>
     #{/form}
     </div>

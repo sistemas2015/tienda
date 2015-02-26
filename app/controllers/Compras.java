@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Compra;
 import models.Producto;
 import models.Promocion;
 import models.Usuario;
@@ -26,6 +27,8 @@ public class Compras extends Controller {
         render();
     }
     
+    
+    
     public static void listaPromociones(){
     	List<Promocion> promociones=Promocion.findAll();
     	
@@ -41,5 +44,35 @@ public class Compras extends Controller {
     	List<Producto> productos=Producto.findAll();
     	render(productos);
     }
+    
+    public static void prods(Long id) {
+    	System.out.println("se llamo");
+    	Producto p = Producto.findById(id);    
+        render(p);
+    }
+    
+    
+    public static void comprar(Long id, int cantidad) {
+    	Usuario usu = Usuario.find("byEmail", Security.connected()).first();
+		Producto pro = Producto.findById(id);
+		if (cantidad <= pro.stock) {
+			pro.decreaseStock(cantidad);			
+			Compra com = new Compra(usu, pro, cantidad);
+			com.save();
+			flash.success("Compra Exitosa");
+		} else {			
+				flash.error("Lo sentimos ha excedido el stock verifique que la cantidad sea correcta ");			
+		}
+
+		redirect("/compras/listaProductos#tit");
+	}
+    
+    public static void repo(){
+		Usuario usu = Usuario.find("byEmail", Security.connected()).first();
+		List<Compra> com= Compra.find("cliente_id=?",usu.id).fetch();
+		//res.get(1).lista.valor
+		render(com);
+	}
+
 
 }

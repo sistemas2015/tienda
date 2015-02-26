@@ -1,77 +1,36 @@
-#{extends 'main.html' /}
-<div class="container">
-	<div class="row">
+#{extends 'Secure/layout.html' /}
+
+<div id="login">
+	
+	<h1>&{'secure.title'}</h1>
 		
+	#{form @authenticate()}
 		
-			<div id="loginbox" style="margin-top:50px; "  class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-		            <div class="panel panel-info" style="background: rgba(255, 255, 255);" >
-		                    <div class="panel-heading">
-		                        <div class="panel-title"><b>Inicio de Sesión</b></div>
-		                    </div>  <!-- panel heading-->
-		
-		                    <div style="padding-top:30px;" class="panel-body" >
-		
-		                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-		                            
-		                            
-		                   		#{form @Secure.authenticate(username,password)}
-				
-									#{if flash.error}
-										<p class="error" style="color: red; font-weight: bold;">
-											Email o Contraseña Incorrectos
-										</p>
-									#{/if}
-									#{if flash.success}
-										<p class="success"  style="color: #0088ff; font-weight: bold;">
-											Ha cerrado la sesión exitosamente
-										</p>
-									#{/if}
-		                            <div style="margin-bottom: 25px" class="input-group">
-		                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-		                                   	    <input name="username" id="username" value="${flash.username}" type="email" class="form-control" placeholder="ingrese su e-mail" required>                                        
-		                                    </div>
-		                                
-		                            <div style="margin-bottom: 25px" class="input-group">
-		                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-		                                        <input id="password" type="password" class="form-control" name="password" type="password" placeholder="ingrese su contraseña" required>
-		                                    </div>
-		                                    
-		
-		                         	<p id="remember-field">
-										<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
-										<label for="remember">Recordar Cuenta</label>
-									</p>
-							
-		                                <div style="margin-top:10px" class="form-group">
-		                                    <!-- Button -->
-		
-		                                    <div class="col-sm-12 controls">
-		                                      <input id="btn-login" type="submit" class="btn btn-success" value="Ingresar" style="font-weight: bold"/>	
-		                                    </div>
-		                                </div>
-		                                
-		                             
-		                                <br><br>
-		
-		
-		                                <div class="form-group">
-		                                    <div class="col-md-12 control">
-		                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-		                                           <h6> Aún no tiene una cuenta!</h6> 
-		                                        <a href="/security/registro"  class="btn btn-primary  form-control">
-		                                          <b>REGISTRESE AHORA</b>
-		                                        </a>
-		                                        </div>
-		                                    </div>
-		                                </div>    
-		                            #{/form}   
-		
-		
-		
-		                        </div>                     
-		                    </div>   <!--panel info -->
-		        </div> <!--log in box -->
-		    	
-		
-	</div><!-- row -->
-</div><!-- container -->
+		#{if flash.error}
+			<p class="error">
+				&{flash.error}
+			</p>
+		#{/if}
+		#{if flash.success}
+			<p class="success">
+				&{flash.success}
+			</p>
+		#{/if}
+	
+		<p id="username-field">
+			<label for="username">&{'secure.username'}</label>
+			<input type="text" name="username" id="username" value="${flash.username}" />
+		</p>
+		<p id="password-field">
+			<label for="password">&{'secure.password'}</label>
+			<input type="password" name="password" id="password" value="" />
+		</p>
+		<p id="remember-field">
+			<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
+			<label for="remember">&{'secure.remember'}</label>
+		</p>
+		<p id="signin-field">
+			<input type="submit" id="signin" value="&{'secure.signin'}" />
+		</p>
+	#{/form}
+</div>

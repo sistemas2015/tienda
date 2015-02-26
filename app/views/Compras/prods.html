@@ -1,0 +1,56 @@
+<script>
+	$(document).ready(function() {
+		// Handler for .ready() called.
+
+		$("#cant").change(function() {
+			var can = $('#cant').val();
+			var pre=${p.precio}*can			
+			$('#total').val(pre);
+
+		});
+
+	});
+</script>
+<form action="@{Compras.comprar()}">
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">${p.nombre}</h3>
+	</div>
+	<div class="panel-body">
+		<input  type="hidden" name="id" value="${p.id}">
+		<table class="table">
+			<tr>
+				<td colspan="2">
+					<div class="alert alert-info" role="alert">
+						<span class="glyphicon glyphicon-exclamation-sign"
+							aria-hidden="true"></span> <span class="sr-only">Descripcion:</span>
+						${p.descripcion}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Precio:</td>
+				<td><h1>${p.precio}$</h1></td>
+			</tr>
+			
+			<tr>
+				<td>Cantidad:</td>
+				<td><input id="cant" name="cantidad" type="number"></td>
+			</tr>
+			<tr>
+				<td><strong>Costo Total:</strong></td>
+				<td>
+					<input type="text" id="total" readonly="readonly">
+					<span>$</span>
+				</td>
+			</tr>
+		</table>
+		<input class="btn btn-success fa fa-shopping-cart" type="submit" value="Comprar">
+		
+	</div>
+</div>
+</form>
+
+
+
+

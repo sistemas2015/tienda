@@ -25,4 +25,8 @@ GET     /admin        						   module:crud
 *	   /promociones								Promociones.index
 #Producto
 *		/productos								Productos.index
+#Producto
+GET		/specific				                Compras.prods
+#Producto
+*		/repo				                    Compras.repo
 

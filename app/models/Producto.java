@@ -31,5 +31,11 @@ public String toString(){
 		
 		return "Stock: "+String.valueOf(stock)+" unidades";
 	}
+	
+	public void decreaseStock(int can){
+		this.stock=this.stock-can;
+		this.save();
+	}
+
 
 }
