@@ -15,7 +15,14 @@ GET     /public/                                staticDir:public
 *       /{controller}/{action}                  {controller}.{action}
 
 # Import CRUD routes
-*     /admin        						   module:crud
+GET     /admin        						   module:crud
 
 # Import Secure routes
 *      /             							module:secure
+#ListarPromociones
+*	   /compras									Compras.index
+#Promociones
+*	   /promociones								Promociones.index
+#Producto
+*		/productos								Productos.index
+

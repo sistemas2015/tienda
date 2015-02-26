@@ -1,0 +1,90 @@
+#{extends 'main.html' /}
+#{set title:'Listado de Productos' /}
+
+
+<div class="container">
+	<div class="row">
+		<h1>PRODUCTOS</h1>
+	</div>
+	<div class="row">
+		<div class="col-lg-8">
+			
+			#{if productos}
+			
+				
+			<table class="table table-striped table-hover table-bordered">
+			
+				<tr>
+					<th class="text-center">
+						NOMBRE
+					</th>
+					<th class="text-center">
+						DESCRIPCIÓN
+					</th>
+					<th class="text-center">
+						STOCK
+					</th>
+					<th class="text-center">
+						PRECIO
+					</th>
+					#{if conectado}
+					<th class="text-center">
+						COMPRAR
+					</th>
+					#{/if}
+				</tr>
+	
+				#{list items:productos, as:'producto'}
+					#{if producto.stock>0}
+				<tr>
+					<td class="text-center">
+						${producto.nombre}
+					</td>
+					<td class="text-center">
+						${producto.descripcion}
+					</td>
+					<td class="text-center">
+						${producto.stock}
+					</td>
+					<td class="text-center">
+						${producto.precio}
+					</td>
+					#{if conectado}
+					<td class="text-center">
+						<a class="btn btn-success fa fa-shopping-cart">  Comprar</a>
+					</td>
+					#{/if}
+				</tr>
+				#{/if}
+				#{/list}
+			</table>
+		</div>
+		
+		<div class="col-lg-4" >
+		#{if conectado}
+			<div class="btn btn-primary col-lg-12">
+				<h4>COMPRA</h4>
+			</div>
+		#{/if}
+		#{else}
+			<a href="/login"  style="color:black;">
+				<div class="btn btn-warning col-lg-12" style="color: black">
+					<h3><span class="fa fa-shopping-cart"></span> Para Comprar Inicie Sesión</h3>
+				</div>
+			</a>
+		#{/else}
+		
+			
+		</div>	
+		#{/if}
+		#{else}
+		<div>
+		<h3 style="color:red">Lo sentimos por el momento no hay productos</h3>
+		</div>
+		#{/else}
+		
+		
+	
+	</div>
+
+</div>

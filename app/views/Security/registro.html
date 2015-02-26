@@ -1,0 +1,99 @@
+#{extends 'main.html' /}
+
+<script>
+function ValidaSoloNumeros() {
+	 if ((event.keyCode < 48) || (event.keyCode > 57)) 
+	  event.returnValue = false;
+	}
+	
+function ValidaSoloLetras() {
+	 if ((event.keyCode != 32) && (event.keyCode < 65) || (event.keyCode > 90) && (event.keyCode < 97) || (event.keyCode > 122))
+	  event.returnValue = false;
+	
+	}
+</script>
+
+<div class="container">
+    
+		        <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		                    <div class="panel panel-info" style="background: rgba(255, 255, 255, .9);">
+		                        <div class="panel-heading">
+		                            <div class="panel-title"><b>Registro de Usuario</b>   <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/login"><h6 style="color:#0088ff;">Iniciar Sesión</h6></a></div>
+		                         </div>
+		                        </div>  
+		                        <div class="panel-body" >
+		                        
+		                       
+
+						#{form @Security.guardarUsuario(email,nombre,apellido,password)}
+		                        			                                  
+		                              
+		                                  <br>
+		                                <div class="form-group" style="margin-bottom: 25px">
+		                                    <label for="firstname" class="col-md-3 control-label">Nombre:</label>
+		                                    <div class="col-md-9">
+		                                        <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre" onkeypress="ValidaSoloLetras();"  value="${flash.nombre}" required>
+		                                    </div>
+		                                </div>
+		                                <br>
+		                                <div class="form-group" style="margin-bottom: 25px">
+		                                    <label for="lastname" class="col-md-3 control-label">Apellido:</label>
+		                                    <div class="col-md-9">
+		                                        <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido" onkeypress="ValidaSoloLetras();"  value="${flash.apellido}" required>
+		                                    </div>
+		                                </div>
+		                                <br>
+		                                  <div class="form-group" style="margin-bottom: 25px">
+		                                	 <label for="email" class="col-md-3 control-label">Email:</label>
+		                                    <div class="col-md-9">
+		                                        <input type="email" id="email" class="form-control" name="email" placeholder="Ingrese su email" value="${flash.email}" required><br>
+		                                          #{if flash.existente}
+												<p class="error" style="color: red; font-weight: bold;">
+													&{flash.existente}
+												</p>
+												#{/if}
+		                                    </div>
+		                                    
+		                                    
+		                                </div>
+		                                <br>
+		                                <div class="form-group" style="margin-bottom: 25px">
+		                                    <label class="col-md-3 control-label">Password:</label>
+		                                    <div class="col-md-9">
+		                                        <input type="password" id="password" class="form-control" name="password" placeholder="Ingrese su clave" value="${flash.emailRepetido}" required>
+		                                    </div>
+		                                </div>
+		                                <br>
+		                       				
+		                       				<div class="form-group" style="margin-bottom: 25px">
+		                                    <label class="col-md-3 control-label"></label>
+		                                    <div class="col-md-9">
+		                                       #{if flash.error}
+												<p class="error" style="color: red; font-weight: bold;">
+													&{flash.error}
+												</p>
+											#{/if}
+		                                    </div>
+		                                </div>
+		                       
+		                                	
+										<br>
+		                                <div class="form-group" style="margin-bottom: 25px">
+		                                    <!-- Button -->                                        
+		                                    <div class="col-md-offset-3 col-md-9">
+		                                        <button id="btn-signup" type="submit" class="btn btn-primary" ><b>Registrar Cuenta</b></button>
+		                                    </div>
+		                                    
+		                                </div>
+		                    
+		                    #{/form}
+		                         </div>
+		                    </div>
+		
+		               
+		               
+		                
+		         </div> 
+</div>	         
+		         
+		         

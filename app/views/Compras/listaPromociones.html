@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+#{set title:'listaPromociones.html' /}
+
+
+
+<div class="container">
+	<div class="row">
+		<h1>PROMOCIONES</h1>
+	</div>
+	<div class="row">
+		<div class="col-mg-12">
+			
+			#{if promociones}
+			
+			<table class="table table-striped table-hover table-border">
+			
+				<tr>
+					<th>
+					DESCRIPCIÓN
+					</th>
+					<th>
+					PRODUCTO
+					</th>
+				</tr>
+	
+				#{list items:promociones, as:'promocion'}
+					<td>
+					${promocion.descripcion}
+					</td>
+					<td>
+					${promocion.producto.nombre} -  ${promocion.producto.descripcion}
+					</td>
+					
+				#{/list}
+
+			</table>
+		#{/if}
+		#{else}
+		<h3 style="color:red">Lo sentimos por el momento no hay promociones</h3>
+		#{/else}
+		
+		</div>
+	
+	</div>
+
+</div>
