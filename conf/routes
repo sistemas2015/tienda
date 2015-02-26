@@ -26,3 +26,6 @@ GET     /admin        						   module:crud
 #Producto
 *		/productos								Productos.index
 
+#Mapas
+*		/mapas									Mapas.index
+

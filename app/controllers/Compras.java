@@ -41,5 +41,9 @@ public class Compras extends Controller {
     	List<Producto> productos=Producto.findAll();
     	render(productos);
     }
+    
+    public static void estadisticas(){
+    	render();
+    }
 
 }
