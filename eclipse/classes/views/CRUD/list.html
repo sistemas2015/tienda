@@ -5,20 +5,20 @@
 
     <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
 
-    <div id="crudListSearch">
-        #{crud.search /}
+    <div id="crudListSearch" >
+       #{crud.search /}
     </div>
 
     <div id="crudListTable">
-        #{crud.table /}
+        <b>#{crud.table /}</b>
     </div>
 
-    <div id="crudListPagination">
+    <div id="crudListPagination" style="font-size: 12px; font-weight: bold;">
         #{crud.pagination /}
     </div>
 
     <p id="crudListAdd">
-        <a href="@{blank()}">&{'crud.add', type.modelName}</a>
+        <a href="@{blank()}" style="font-size: 14px; font-weight: bold;" class="btn btn-primary">Nuevo</a>
     </p>
 
 </div>
