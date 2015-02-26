@@ -3,7 +3,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="well" align="center">
+		<div class="well btn btn-primary btn-block" align="center">
 			<h1>Mis compras</h1>
 		</div>
 	</div>
@@ -18,17 +18,13 @@
 					<th>Precio U</th>
 					<th>Precio T</th>
 				</tr>
-				#{list res, as:'r'}
+				#{list com, as:'r'}
 				<tr>
-					<td>${r.fechaReserva}</td>
-					<td>${r.lista.vuelo.origen}->${r.lista.vuelo.destino}</td>
+					<td>${r.fecha}</td>
+					<td>${r.producto.nombre}</td>
 					<td>${r.cantidad}</td>
-					<td>${r.lista.categoria.descripcion}</td>
-					<td>${r.lista.vuelo.avion.marca}</td>
-					<td>${r.lista.vuelo.fechaSalida}</td>
-					<td>${r.lista.vuelo.fechaLlegada}</td>
-					<td>${r.lista.valor}</td>
-					<td>%{ total =r.cantidad*r.lista.valor; out.print(total); }%</td>
+					<td>${r.producto.precio}</td>
+					<td>%{ total =r.cantidad*r.producto.precio; out.print(total); }%</td>
 				</tr>
 				#{/list}
 			</table>
@@ -37,7 +33,7 @@
 				lo sentimo no tiene compras realizadas para comprar haga clic <a
 					href="/compras">aqui</a>
 			</h1>
-			#{else}
+			#{/else}
 		</div>
 	</div>
 

@@ -3,10 +3,15 @@
 		// Handler for .ready() called.
 
 		$("#cant").change(function() {
+			
 			var can = $('#cant').val();
+			if(can<=1){
+				can=1;
+				$('#cant').val(1);			
+			}
+				
 			var pre=${p.precio}*can			
 			$('#total').val(pre);
-
 		});
 
 	});
@@ -35,7 +40,7 @@
 			
 			<tr>
 				<td>Cantidad:</td>
-				<td><input id="cant" name="cantidad" type="number"></td>
+				<td><input id="cant" name="cantidad" value="1" type="number"></td>
 			</tr>
 			<tr>
 				<td><strong>Costo Total:</strong></td>
@@ -45,7 +50,7 @@
 				</td>
 			</tr>
 		</table>
-		<input class="btn btn-success fa fa-shopping-cart" type="submit" value="Comprar">
+		<input class="btn btn-success fa fa-shopping-cart" type="submit"  value="Comprar">
 		
 	</div>
 </div>
