@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Compra;
+import models.Estadistica;
 import models.Producto;
 import models.Promocion;
 import models.Usuario;
@@ -59,7 +60,14 @@ public class Compras extends Controller {
 		if (cantidad <= pro.stock) {
 			pro.decreaseStock(cantidad);			
 			Compra com = new Compra(usu, pro, cantidad);
+			Estadistica e=new Estadistica();
+			e.compra=com;
+			e.usuario=usu;
+			
+			
 			com.save();
+			e.save();
+			
 			flash.success("Compra Exitosa");
 		} else {			
 				flash.error("Lo sentimos ha excedido el stock verifique que la cantidad sea correcta ");			
@@ -77,7 +85,20 @@ public class Compras extends Controller {
 
 
     public static void estadisticas(){
-    	render();
+    	List<Usuario> usuarios=Usuario.findAll();
+    	List<Estadistica> estadisticas=Estadistica.findAll();
+    	
+    	
+    	render(usuarios,estadisticas);
+    }
+    
+    public static void estadisticasCliente(Long id){
+    	Usuario usuario=Usuario.findById(id);
+    	List<Estadistica> estadisticas=Estadistica.find("byUsuario_id",usuario.id).fetch();
+    	List<Compra> com= Compra.find("cliente_id=?",usuario.id).fetch();
+		//res.get(1).lista.valor
+    	
+    	render(estadisticas,usuario,com);  
     }
 
 

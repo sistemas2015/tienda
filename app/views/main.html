@@ -56,7 +56,9 @@
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="/compras/listaProductos">Productos</a></li>
 										<li><a href="/compras/listaPromociones">Promociones</a></li>
-										<li><a href="#">Estadísticas</a></li>  
+										#{secure.check "admin"}
+										<li><a href="/compras/estadisticas">Estadísticas</a></li>  
+										#{/secure.check}
 										<li><a href="/compras/stock">Stock</a></li> 
 										#{if conectado}
 											<li><a href="/logout">Cerrar Sesión</a></li> 

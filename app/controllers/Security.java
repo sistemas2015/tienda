@@ -4,8 +4,6 @@ package controllers;
 import java.util.Random;
 
 import org.h2.engine.User;
-
-import models.Rol;
 import models.Usuario;
 import play.data.validation.Required;
 import play.mvc.Before;

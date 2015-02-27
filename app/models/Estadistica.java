@@ -7,8 +7,11 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Rol extends Model {
-	public String nombre;
+public class Estadistica extends Model {
 	
+	@ManyToOne
+	public Usuario usuario;
+	@ManyToOne
+	public Compra compra;
     
 }
